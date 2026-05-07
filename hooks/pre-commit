@@ -1,0 +1,8 @@
+#!/bin/bash
+# Pre-commit hook to ensure Essay.pdf is up to date
+
+echo "Running compile.sh to update Essay.pdf..."
+./compile.sh
+
+# Stage the updated PDF
+git add Essay.pdf
