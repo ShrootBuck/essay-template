@@ -1,29 +1,21 @@
 # Essay Template
 
-A nice & fancy essay format I use for all of my school assignments.
+Edit [Essay.typ](Essay.typ) to write an essay. The variables at the top set the title, author, school, course, and date. The date defaults to today.
 
-## Format
+Write the essay inside the block containing `= Subheading`. Its headings and prose count toward the cover's word count. Add sources under **References**, with a blank line between entries for hanging indents.
 
-This project uses Markdown with LaTeX formatting:
+## Build
 
-- **Source**: [`Essay.md`](Essay.md) — written in Markdown with YAML frontmatter for PDF generation
-- **Output**: [`Essay.pdf`](Essay.pdf) — compiled academic paper
-- **Compile**: Run `./compile.sh` to regenerate the PDF (requires pandoc and xelatex)
+Install the [Typst CLI](https://github.com/typst/typst#installation), then run:
 
-The paper includes word count markers that are automatically replaced during compilation:
-
-```markdown
-<!-- START_WORD_COUNT -->
-...content...
-<!-- END_WORD_COUNT -->
+```sh
+./compile.sh
 ```
 
-## Setup
+This generates [Essay.pdf](Essay.pdf). To rebuild as you write, run `typst watch Essay.typ`. You can also upload the single source file to the [Typst web app](https://typst.app/).
 
-After cloning, install the git hook to auto-compile on commit:
+The template uses US Letter pages, one-inch margins, and 12-point Times New Roman. It falls back to Libertinus Serif when Times New Roman is unavailable. Page numbering starts on the first page of the essay.
 
-```bash
-./setup-hooks.sh
-```
+## Optional pre-commit hook
 
-This ensures the PDF is always up-to-date before pushing to Github. Feel free to ignore if not using version control.
+Run `./setup-hooks.sh` to install the included hook locally. It rebuilds and stages the PDF before a commit.
